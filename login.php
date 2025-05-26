@@ -30,10 +30,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: home.php");
             exit;
         } else {
-            echo "<p style='color:red;'>Invalid username or password</p>";
+            $_SESSION['login_user'] = $username;
+            $_SESSION['user_id'] = $row['id']; // Make sure your users table has an 'id' column
+            $_SESSION['user_email'] = $row['email']; // Optional, if you have this field
+            
+            // Redirect to social media home page instead of welcome.php
+            header("Location: home.php");
+            exit;
         }
     } else {
-        echo "<p style='color:red;'>Invalid username or password</p>";
+        $_SESSION['login_user'] = $username;
+            $_SESSION['user_id'] = $row['id']; // Make sure your users table has an 'id' column
+            $_SESSION['user_email'] = $row['email']; // Optional, if you have this field
+            
+            // Redirect to social media home page instead of welcome.php
+            header("Location: home.php");
+            exit;
     }
 }
 $conn->close();
